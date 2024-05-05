@@ -53,6 +53,9 @@
                 font-weight: bold;
                 color: #4a54e1;
             }
+            .hidden {
+                display: none;
+            }
         </style>
     </head>
     <body>
@@ -79,6 +82,21 @@
             >
                 Phát Âm Thanh
             </button>
+            <br />
+            <br />
+            <a href="#" id="toggleInfoButton">Đọc thêm</a>
+            <div id="additionalInfo" class="hidden">
+                <ul>
+                    <li>Hữu dụng cho việc sau trong thế giới Fantasy:</li>
+                    <li>1. Tạo tên nhân vật</li>
+                    <li>2. Tạo tên địa danh</li>
+                    <li>3. Tạo câu lệnh phép, chú thuật</li>
+                    <li>
+                        4. Tạo văn bản giao tiếp trong bối cảnh Fantasy, như
+                        tình huống viết thư từ.v.v cho một nhân vật không hiểu
+                    </li>
+                </ul>
+            </div>
             <div id="output"></div>
         </div>
         <script type="module" src="./main.js"></script>

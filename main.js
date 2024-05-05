@@ -71,5 +71,16 @@ function speakEnglish() {
     speechSynthesis.speak(msg);
 }
 
+document
+    .getElementById("toggleInfoButton")
+    .addEventListener("click", function () {
+        var infoDiv = document.getElementById("additionalInfo");
+        if (infoDiv.style.display === "none" || infoDiv.style.display === "") {
+            infoDiv.style.display = "block";
+        } else {
+            infoDiv.style.display = "none";
+        }
+    });
+
 document.getElementById("translateButton").addEventListener("click", translate);
 document.getElementById("speakButton").addEventListener("click", speakEnglish);
