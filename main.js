@@ -15,11 +15,11 @@ function translate() {
     }
 
     // Phân tích và lưu trữ mọi thành phần, bao gồm từ, dấu câu và khoảng trắng
-    const elements = inputText.split(/([.,\s]+)/);
+    const elements = inputText.split(/([.,!?\s]+)/);
 
     // Dịch các từ đã được làm sạch và giữ nguyên dấu câu/khoảng trắng
     let translatedElements = elements.map((element, index) => {
-        if (element.match(/[.,\s]+/)) {
+        if (element.match(/[.,!?\s]+/)) {
             return element; // Trả về dấu câu và khoảng trắng không đổi
         } else {
             const lowerWord = element.toLowerCase();
