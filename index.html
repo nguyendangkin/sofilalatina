@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/x-icon" href="./images/favicon.png" />
+        <title>Sofilatina Isekai</title>
+        <style>
+            body {
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f4f4f9;
+                color: #333;
+                margin: 0;
+                padding: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                box-sizing: border-box;
+            }
+            .container {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 600px;
+                text-align: center;
+            }
+            textarea,
+            select,
+            button {
+                width: 90%;
+                padding: 10px;
+                margin-top: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                font-size: 16px;
+            }
+            button {
+                background-color: #5c67f2;
+                color: white;
+                border: none;
+                cursor: pointer;
+                font-weight: bold;
+            }
+            button:hover {
+                background-color: #4a54e1;
+            }
+            #output {
+                margin-top: 20px;
+                font-size: 18px;
+                font-weight: bold;
+                color: #4a54e1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>
+                <span style="color: rgb(255, 64, 64); text-align: center"
+                    >SoFiaLalatina</span
+                >
+                Language Fantasy Translator
+            </h1>
+            <select id="direction">
+                <option value="toFantasy">Vietnamese to SoFiaLalatina</option>
+                <option value="toVietnamese">
+                    SoFiaLalatina to Vietnamese
+                </option>
+            </select>
+            <textarea
+                id="inputText"
+                placeholder="Enter text here..."
+            ></textarea>
+            <button id="translateButton">Translate</button>
+            <div id="output"></div>
+        </div>
+        <script type="module" src="./main.js"></script>
+    </body>
+</html>
