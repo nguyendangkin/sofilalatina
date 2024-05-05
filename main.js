@@ -1,5 +1,20 @@
 import { vietNamArray, fantasyArray } from "./arrays.js";
 
+let voices = [];
+let femaleVoice = null;
+
+function initVoices() {
+    voices = speechSynthesis.getVoices();
+    // Tìm giọng nữ tiếng Anh Anh
+    femaleVoice = voices.find(
+        (voice) => voice.lang === "en-GB" && voice.gender === "female"
+    );
+}
+
+if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = initVoices;
+}
+
 function translate() {
     const direction = document.getElementById("direction").value;
     const inputText = document.getElementById("inputText").value.trim();
@@ -14,21 +29,17 @@ function translate() {
         targetArray = vietNamArray;
     }
 
-    // Phân tích và lưu trữ mọi thành phần, bao gồm từ, dấu câu và khoảng trắng
     const elements = inputText.split(/([.,!?\s]+)/);
-
-    // Dịch các từ đã được làm sạch và giữ nguyên dấu câu/khoảng trắng
-    let translatedElements = elements.map((element, index) => {
+    let translatedElements = elements.map((element) => {
         if (element.match(/[.,!?\s]+/)) {
-            return element; // Trả về dấu câu và khoảng trắng không đổi
+            return element;
         } else {
             const lowerWord = element.toLowerCase();
             const index = sourceArray.indexOf(lowerWord);
-            return index !== -1 ? targetArray[index] : element; // Dịch nếu tìm thấy
+            return index !== -1 ? targetArray[index] : element;
         }
     });
 
-    // Viết hoa chữ cái đầu sau dấu chấm
     let capitalizeNext = true;
     translatedElements = translatedElements.map((element) => {
         if (/[.!?]/.test(element)) {
@@ -42,13 +53,23 @@ function translate() {
         }
     });
 
-    // Ghép lại để tạo thành câu hoàn chỉnh
     outputDiv.textContent = translatedElements.join("");
 }
 
-document.getElementById("direction").addEventListener("change", function () {
-    document.getElementById("inputText").value = ""; // Xóa trường nhập khi thay đổi hướng dịch
-    document.getElementById("output").textContent = ""; // Tùy chọn xóa kết quả
-});
+function speakEnglish() {
+    const text = document.getElementById("output").textContent;
+    const msg = new SpeechSynthesisUtterance(text);
+    if (femaleVoice) {
+        msg.voice = femaleVoice; // Sử dụng giọng nữ đã tìm được
+    } else {
+        msg.lang = "en-GB"; // Mặc định giọng Anh nếu không tìm thấy giọng nữ
+    }
+    // Điều chỉnh tốc độ đọc và độ cao để tạo hiệu ứng huyền thoại
+    msg.rate = 0.75; // Chậm lại một chút
+    msg.pitch = 1.5; // Tăng độ cao để giọng nói nghe cao và thanh thót hơn
+
+    speechSynthesis.speak(msg);
+}
 
 document.getElementById("translateButton").addEventListener("click", translate);
+document.getElementById("speakButton").addEventListener("click", speakEnglish);
