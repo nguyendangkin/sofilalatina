@@ -1,6 +1,3 @@
-Dưới đây là một mẫu README phần giới thiệu cho dự án của bạn:
-
----
 
 # Sofilalatina Translator
 
