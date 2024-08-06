@@ -28,6 +28,3 @@ Sofilalatina Translator là một công cụ trực tuyến cho phép người d
 5. **Xem Thông Tin Bổ Sung**
    - Nhấn nút "Đọc thêm" để xem thông tin về ứng dụng của Sofilalatina.
 
----
-
-Chúc bạn thành công với dự án của mình! Nếu cần thêm bất kỳ sự hỗ trợ nào, đừng ngần ngại hỏi nhé.
